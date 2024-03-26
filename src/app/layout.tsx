@@ -4,6 +4,7 @@ import React from "react";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import Navbar from "@/components/shared/navbar/Navbar";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -42,9 +43,15 @@ export default function RootLayout({
             }}
         >
             <html lang="en">
-                <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-                    <ThemeProvider>{children}</ThemeProvider>
-                </body>
+                {" "}
+                <ThemeProvider>
+                    <body
+                        className={`${inter.variable} ${spaceGrotesk.variable}`}
+                    >
+                        <Navbar/>
+                        {children}
+                    </body>
+                </ThemeProvider>
             </html>
         </ClerkProvider>
     );
