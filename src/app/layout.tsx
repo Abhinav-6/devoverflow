@@ -1,10 +1,12 @@
+import Navbar from "@/components/shared/navbar/Navbar";
+import LeftSidebar from "@/components/shared/sidebar/LeftSidebar";
+import RightSidebar from "@/components/shared/sidebar/RightSidebar";
+import { ThemeProvider } from "@/context/ThemeProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import React from "react";
-import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
-import Navbar from "@/components/shared/navbar/Navbar";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -48,8 +50,15 @@ export default function RootLayout({
                     <body
                         className={`${inter.variable} ${spaceGrotesk.variable}`}
                     >
-                        <Navbar/>
-                        {children}
+                        <Navbar />
+                        <main className="flex">
+                            <LeftSidebar />
+                            <section className="ml-96 flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36">
+                                {children}
+                            </section>
+
+                            <RightSidebar />
+                        </main>
                     </body>
                 </ThemeProvider>
             </html>

@@ -15,28 +15,28 @@ export default function Theme() {
     const { mode, setMode } = useTheme();
     return (
         <>
-            <Menubar className="cursor-pointer border-0 text-white">
+            <Menubar className="mx-0 cursor-pointer border-0  text-white">
                 <MenubarMenu>
                     <MenubarTrigger>
                         {mode === "light" ? (
                             <Image
                                 src="/assets/icons/sun.svg"
                                 alt="sun icon"
-                                width={20}
-                                height={20}
+                                width={30}
+                                height={30}
                             />
                         ) : (
                             <Image
                                 src="/assets/icons/moon.svg"
                                 alt="moon icon"
-                                width={20}
-                                height={20}
+                                width={30}
+                                height={30}
                             />
                         )}
                     </MenubarTrigger>
                     <MenubarContent className="absolute -right-8 max-w-16">
                         <MenubarItem
-                            className="flex items-center gap-4"
+                            className={`flex items-center gap-4 ${mode === "light" ? "bg-secondary" : ""}`}
                             onClick={() => {
                                 setMode("light");
                             }}
@@ -51,7 +51,7 @@ export default function Theme() {
                         </MenubarItem>
                         <MenubarSeparator />
                         <MenubarItem
-                            className="flex items-center gap-4"
+                            className={`flex items-center gap-4 ${mode === "dark" ? "bg-secondary" : ""}`}
                             onClick={() => {
                                 setMode("dark");
                             }}
